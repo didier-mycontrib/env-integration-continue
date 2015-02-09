@@ -1,0 +1,44 @@
+package tp.app.zz.it.test;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverBackedSelenium;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
+import com.thoughtworks.selenium.Selenium;
+
+public class SequenceWebDriverBackIT {
+	private Selenium selenium;
+
+	@Before
+	public void setUp() throws Exception {
+		//WebDriver driver = new FirefoxDriver(); //visible browser during test
+		
+		HtmlUnitDriver driver = new HtmlUnitDriver();  //invisible browser (with limitations)
+		driver.setJavascriptEnabled(true);
+		
+		String baseUrl = "http://localhost:8080/";
+		selenium = new WebDriverBackedSelenium(driver, baseUrl);
+	}
+
+	@Test
+	public void testSequenceWebDriverBackIT() throws Exception {
+		selenium.open("/my-spring-jeeapp1-web/");
+		selenium.click("link=bienvenue");
+		selenium.waitForPageToLoad("30000");
+		selenium.click("link=conversion");
+		selenium.waitForPageToLoad("30000");
+		selenium.type("id=frm:m1", "euro");
+		selenium.type("id=frm:m2", "dollar");
+		selenium.type("id=frm:montantInput", "28");
+		selenium.click("id=frm:convertButton");
+		selenium.waitForPageToLoad("30000");
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		selenium.stop();
+	}
+}
