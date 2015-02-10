@@ -3,15 +3,19 @@ package tp.app.zz.it.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverBackedSelenium;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import com.thoughtworks.selenium.Selenium;
+import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
+
+
+/* NB: l'interface "Selenium" (WebDriverBack) est considérée comme "deprecated".
+ *    il vaut mieux exporter le test java au format "WebDriver" (et pas "webDriverBack") depuis seleniumIDE)
+ */
 
 public class SequenceWebDriverBackIT {
 	private Selenium selenium;
-
+	
 	@Before
 	public void setUp() throws Exception {
 		//WebDriver driver = new FirefoxDriver(); //visible browser during test

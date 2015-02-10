@@ -19,8 +19,8 @@
           <hibernate.hbm2ddl.auto>none</hibernate.hbm2ddl.auto>
           <myDB.driverClassName>com.mysql.jdbc.Driver</myDB.driverClassName>
           <myDB.url>jdbc:mysql://localhost/devise_db_ex1</myDB.url>
-          <myDB.username>root</myDB.username>
-          <myDB.password>formation</myDB.password>   		  		
+          <myDB.username>root</myDB.username> <!-- root ou formation ou .... -->
+          <myDB.password>root</myDB.password>   <!-- root ou formation ou .... -->		  		
 	</properties>
   
  
