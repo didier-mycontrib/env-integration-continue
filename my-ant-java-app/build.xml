@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     21 mars 2013 12:18:49                                                        
+
+     my-java-app2   
+     petit calculateur (pour tp)
+                   
+     formation                                                                
+     ====================================================================== -->
+<project name="project" default="default">
+    <description>
+            petit calculateur java
+    </description>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="compile,test,package" description="compile and test">
+         
+    </target>
+	
+	 <!-- - - - - - - - - - - - - - - - - - 
+	          target: clean                      
+	         - - - - - - - - - - - - - - - - - -->
+	    <target name="clean" description="clean ant-build directory and my-ant-java-app.jar">
+	    	<delete dir="ant-build" />
+	        <delete file="my-ant-java-app.jar"/>    	
+	    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: compile                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="compile" description="compile source de src dans ant-build">
+    	<mkdir dir="ant-build"/>
+    	<javac srcdir="src"  destdir="ant-build">
+    		<classpath location="lib/junit-3.8.2.jar"/>
+        </javac>
+    </target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: test (unitaires) / junit3 test suite                    
+	         - - - - - - - - - - - - - - - - - -->
+	    <target name="test" description="tests utitaires junit3">
+	    	<junit  printsummary="withOutAndErr" showoutput="true">
+	    		<classpath>	
+	    		   <pathelement location="lib/junit-3.8.2.jar"/>
+	    		   <pathelement location="ant-build"/>
+	    		</classpath>
+	    	    <test  name="com.mycompany.myapp.test.AllTests" />
+	    	</junit>
+	    </target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		          target: package (construit my-java-app2.jar sans les test)                    
+		         - - - - - - - - - - - - - - - - - -->
+		    <target name="package" description="package appli sous forme de .jar">
+		    	<jar destfile="my-ant-java-app.jar">
+		    		 <fileset  dir="ant-build" >
+		    		 	<exclude  name="**/*Test.class"/>
+		    		 	<exclude  name="**/test/**"/>
+		    		 </fileset>
+		        </jar>
+		    </target>
+
+</project>
