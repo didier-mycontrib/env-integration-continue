@@ -19,7 +19,7 @@ import tp.app.zz.itf.domain.service.GestionDevises;
 public class TestServiceGestionDevises extends AbstractServiceTestWithDbUnit{ 
 
     @Inject
-	private GestionDevises service = null; // service m�tier � tester
+	private GestionDevises service = null; // service metier a tester
 	
 	       
     @Inject
