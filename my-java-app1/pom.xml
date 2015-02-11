@@ -8,6 +8,22 @@
   <packaging>jar</packaging>
 
   <name>my-java-app1</name>
+  
+ <!-- nouvelle version git --> 
+   <scm>
+    <connection>scm:git:file:///media/sf_ext/tp/local-git-repositories/env-integration-continue</connection>
+    <developerConnection>scm:git:file:///media/sf_ext/tp/local-git-repositories/env-integration-continue</developerConnection>
+    <url>file:///media/sf_ext/tp/local-git-repositories/env-integration-continue</url>
+  </scm>
+  
+  <!-- ancienne version svn -->
+  <!-- 
+   <scm>
+    <connection>scm:svn:http://localhost/svn/repo2/trunk/my-java-app1</connection>
+    <developerConnection>scm:svn:http://localhost/svn/repo2/trunk/my-java-app1</developerConnection>
+    <url>http://localhost/svn/repo2/trunk/my-java-app1</url>
+  </scm>
+  -->
 
   <!-- 
   <parent>
