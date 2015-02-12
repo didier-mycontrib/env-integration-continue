@@ -1,0 +1,16 @@
+
+CREATE DATABASE IF NOT EXISTS sonar;
+
+GRANT ALL PRIVILEGES
+    ON sonar.*
+	TO sonar@'%'
+            IDENTIFIED BY 'sonar';
+
+FLUSH PRIVILEGES;
+
+USE mysql;
+
+DELETE FROM user WHERE user='';
+
+FLUSH PRIVILEGES;
+
