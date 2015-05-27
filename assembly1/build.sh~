@@ -1,0 +1,4 @@
+
+mvn assembly:assembly  
+
+echo "fin?" ; read fin

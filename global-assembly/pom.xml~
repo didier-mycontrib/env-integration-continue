@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>tp</groupId>
+  <artifactId>global-assembly</artifactId>
+  <version>1.0-RELEASED</version>
+  <packaging>pom</packaging>
+
+  <dependencies>
+		<dependency>
+      			<groupId>net.sf.dozer</groupId>
+   			 <artifactId>dozer</artifactId>
+   			 <version>5.5.1</version>   			 
+		</dependency>
+		
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.30</version>		
+		</dependency>
+		<dependency>
+			<groupId>tp</groupId>
+  			<artifactId>assembly1</artifactId>
+  			<version>1.0-RELEASED</version>
+			<!-- assembly1-1.0-RELEASED-conf.zip -->
+			<classifier>conf</classifier>
+    			<type>zip</type>
+		</dependency>
+  	</dependencies>
+
+
+  <build>
+     <plugins>     
+     		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>2.5.4</version>
+			<configuration>
+                                 <!--descripteur(s) personnalise(s) / xml -->
+				 <descriptors>
+            				<!--<descriptor>src/assembly/xy-assembly.xml</descriptor>-->
+					<descriptor>lib-assembly-descriptor.xml</descriptor>				
+          			</descriptors>
+				<!-- ou bien reference(s) vers descripteur(s) predefini(s) -->
+                               <!--
+				<descriptorRefs>
+            				<descriptorRef>jar-with-dependencies</descriptorRef>
+         		       </descriptorRefs>
+				-->
+                               <!-- jar-with-dependencies (predefini) construit un seul gros ".jar"
+                                    en fusionant le contenu de chacun des .jar et .zip tirés par dependances -->
+					
+			</configuration>
+			<!-- sans bloc execution , declenchement via mvn assembly:assembly -->
+			<!-- avec bloc execution , declenchement possible via mvn package ou mvn install ou mvn deploy --> 
+			<executions>
+				<execution>
+				<id>create-archive</id>
+				<phase>package</phase>   
+				<goals>
+					<!-- <goal>assembly</goal> -->
+					<goal>attached</goal>
+				</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>		
+  </build>
+
+</project>
+

@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>tp</groupId>
+  <artifactId>assembly1</artifactId>
+  <version>1.0-RELEASED</version>
+ 
+   <build>
+     <plugins>     
+     		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>2.5.4</version>
+			<configuration>
+				 <descriptors>
+            				<!--<descriptor>src/assembly/xy-assembly.xml</descriptor>-->
+					<!--<descriptor>lib-assembly-descriptor.xml</descriptor>-->
+					<descriptor>conf-assembly-descriptor.xml</descriptor>
+          			</descriptors>	
+			</configuration>
+			<!-- sans bloc execution , declenchement via mvn assembly:assembly -->
+			<!-- avec bloc execution , declenchement possible via mvn package ou mvn install ou mvn deploy --> 
+			<executions>
+				<execution>
+				<id>create-archive</id>
+				<phase>package</phase>   
+				<goals>
+					<!-- <goal>assembly</goal> -->
+					<goal>attached</goal>
+				</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>		
+  </build>
+
+</project>
+
